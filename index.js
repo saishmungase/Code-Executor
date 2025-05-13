@@ -68,8 +68,12 @@ import { exec } from "child_process";
 import { v4 as uuid } from "uuid";
 import bodyParser from "body-parser";
 import path from "path";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors());
+
 app.use(bodyParser.json());
 
 const EXTENSIONS = {

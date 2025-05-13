@@ -102,16 +102,16 @@ const getExecutionCommand = (lang, filePath, baseName) => {
 };
 
 app.post("/run-code", (req, res) => {
-  const { fileNames, code, language } = req.body;
+  const { fileName, code, language } = req.body;
 
   if (!code || !language || !(language in EXTENSIONS)) {
     return res.status(400).json({ error: "Invalid input" });
   }
 
   const ext = EXTENSIONS[language];
-  const baseName = `${fileNames}`;
-  const fileName = `${baseName}.${ext}`;
-  const filePath = path.join("codeFiles", fileName);
+  const baseName = `${fileName}`;
+  const completeFileName = `${baseName}.${ext}`;
+  const filePath = path.join("codeFiles", completeFileName);
 
   fs.writeFileSync(filePath, code);
 

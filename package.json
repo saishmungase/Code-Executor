@@ -1,0 +1,22 @@
+{
+  "name": "myjudge0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "child_process": "^1.0.2",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "uuid": "^11.1.0",
+    "path": "^0.12.7"
+  }
+}

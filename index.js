@@ -102,14 +102,14 @@ const getExecutionCommand = (lang, filePath, baseName) => {
 };
 
 app.post("/run-code", (req, res) => {
-  const { code, language } = req.body;
+  const { fileNames, code, language } = req.body;
 
   if (!code || !language || !(language in EXTENSIONS)) {
     return res.status(400).json({ error: "Invalid input" });
   }
 
   const ext = EXTENSIONS[language];
-  const baseName = `code_${uuid().split("-")[0]}`;
+  const baseName = `${fileNames}`;
   const fileName = `${baseName}.${ext}`;
   const filePath = path.join("codeFiles", fileName);
 
@@ -123,7 +123,6 @@ app.post("/run-code", (req, res) => {
   }
 
   exec(command, (err, stdout, stderr) => {
-    // Cleanup
     try {
       fs.unlinkSync(filePath);
       if (language === "java") fs.unlinkSync(`codeFiles/${baseName}.class`);
